@@ -1,5 +1,5 @@
 // importar la función sum del archivo app.js
-const { sum } = require('./app.js');
+const { sum, oneEuroIs, fromEuroToDollar, fromDollarToYen, fromYenToPound } = require('./app.js');
 
 // comienza tu primera prueba
 test('adds 14 + 9 to equal 23', () => {
@@ -10,26 +10,17 @@ test('adds 14 + 9 to equal 23', () => {
     expect(total).toBe(23);
 });
 
-test("One euro should be 1.206 dollars", function(){
-    // importo la funcion desde app.js
-    const { fromEuroToDollar } = require('./app.js')
-    
+test("One euro should be 1.206 dollars", function(){    
     // hago mi comparacion (la prueba)
-    expect(fromEuroToDollar(3.5)).toBe(4.2); //1 euro son 1.2 dolares, entonces 3.5 euros deberian ser = (3.5 * 1.2)
+    expect(fromEuroToDollar(3.5)).toBe(oneEuroIs["USD"] * 3.5); //1 euro son 1.2 dolares, entonces 3.5 euros deberian ser = (3.5 * 1.2)
 })
 
 test("One dollar should be 127.9 yen", function(){
-    // importo la funcion desde app.js
-    const { fromDollarToYen } = require('./app.js')
-    
     // hago mi comparacion (la prueba)
-    expect(fromDollarToYen(2)).toBe(204.64); //1 dolar son 102.32 yenes, entonces 2 dolares deberian ser = (2 * 102.32)
+    expect(fromDollarToYen(2)).toBe(oneEuroIs["JPY"] * 2); //1 dolar son 102.32 yenes, entonces 2 dolares deberian ser = (2 * 102.32)
 })
 
 test("One yen should be 0.00975 pounds", function(){
-    // importo la funcion desde app.js
-    const { fromYenToPound } = require('./app.js')
-    
     // hago mi comparacion (la prueba)
-    expect(fromYenToPound(200)).toBe(1.95); //1 yen son 0.00975 pounds, entonces 200 yenes deberian ser = (0.00975*200)
+    expect(fromYenToPound(200)).toBe(oneEuroIs["GBP"] * 200); //1 yen son 0.00975 pounds, entonces 200 yenes deberian ser = (0.00975*200)
 })
